@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block TITLE %} Adopt A Pet {% endblock %}
+
+{% block BODY %}
+
+<div class="container text-center p-3">
+    <h1 class="p-2">Adopt A Pet</h1>
+    <a class="btn btn-success" href="{{url_for('add_pet')}}">Add a Pet</a>
+</div>
+
+<div class="d-flex flex-wrap justify-content-center">    
+    
+    
+    {% for pet in pets %}
+
+        <div class="containter border border-2 rounded-2 w-25">
+            <div class="row justify-content-center ">
+                <div class="column p-3">
+                    
+                    <img src="{{pet.photo_url}}" alt="{{pet.name}}" class="img-fluid rounded-lg" style="width:200px; height:200px; object-fit:cover">
+            
+                </div>
+            </div>
+
+            <div class="row justify-content-center ">
+                <div class="column">
+                    
+                    <p><a class="btn btn-primary" href="/{{pet.id}}">Meet {{pet.name}}</a></p>
+                </div>
+            </div>
+                    
+            <div class="row justify-content-center ">
+                <div class="column">
+                    {% if pet.avaliable %}
+                     <div class="" style="background-color: rgb(248, 248, 46);">
+                        <b><p>Avaliable</p></b>
+                    </div>
+
+                    {% else %}
+
+                    <div class="" style="background-color: rgb(224, 157, 12);">
+                        <b><p>Adopted</p></b>
+                    </div>    
+
+                    {% endif %}
+                    
+                </div>
+            </div>            
+        </div>
+
+    {% endfor %}
+    
+</div>
+
+
+
+    
+{% endblock %}

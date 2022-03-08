@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block TITLE %}Meet {{pet.name}}{% endblock %}
+
+{% block BODY %}
+
+<div class="container text-center p-3">
+    <h1 class="p-2">Meet {{pet.name}}</h1>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center text-center">
+        <div class="column p-3 col-sm-4">
+            
+    
+            <img src="{{pet.photo_url}}" alt="{{pet.name}}" class="img-fluid rounded-lg" style="width:200px; height:200px; object-fit:cover">
+            <p><b>Name:</b> {{pet.name}}</p>
+            <p><b>Species:</b> {{pet.species}}</p>
+            <p><b>Age:</b> {{pet.age}}</p>
+            <p><b>Notes:</b> {{pet.notes}}</p>    
+                        
+            <div class="row justify-content-center ">
+                <div class="column">
+                    {% if pet.avaliable %}
+                     <div class="" style="background-color: rgb(248, 248, 46);">
+                        <b><p>Avaliable</p></b>
+                    </div>
+
+                    {% else %}
+
+                    <div class="" style="background-color: rgb(224, 157, 12);">
+                        <b><p>Adopted</p></b>
+                    </div>    
+
+                    {% endif %}
+                    
+                    </div>
+                </div>
+                
+                <a class="btn btn-success" href="/{{pet.id}}/edit">Edit</a>              
+                <a href="/" class="btn btn-primary">Back</a>            
+            </div> 
+    
+    </div>
+</div>
+
+
+{% endblock %}

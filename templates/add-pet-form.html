@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block TITLE %}Add A Pet{% endblock %}
+
+{% block BODY %}
+
+
+
+<div class="container ">    
+
+    <div class="row justify-content-center">
+        
+        <div class="column">  
+            <h1>Add A Pet</h1>
+            <br>
+            
+            <form id="add-pet-form" method="POST">
+                {{form.hidden_tag()}}
+
+                {% for field in form if field.widget.input_type !='hidden' %}
+
+                <div class="form-group">
+                    <b>{{field.label }}</b>
+                    {{field (class='form-control form-outline') }}
+
+                    <div>
+                        {% for error in field.errors %}
+                            {{error}}
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success btn-block">Submit</button>
+                <a href="/" class="btn btn-danger btn-block">Cancel</a>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
